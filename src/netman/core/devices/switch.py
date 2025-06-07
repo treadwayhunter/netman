@@ -7,9 +7,14 @@ class Switch(BaseNetDevice, ABC):
         super().__init__(hostname, protocol)
         self.name = None
         self.l2_interfaces = None
+        self.l3_interfaces = None
 
     @abstractmethod
     def _fetch_l2_interfaces(self):
+        pass
+
+    @abstractmethod
+    def _fetch_l3_interfaces(self):
         pass
 
     @abstractmethod
@@ -21,3 +26,8 @@ class Switch(BaseNetDevice, ABC):
         if self.l2_interfaces is None:
             self.l2_interfaces = self._fetch_l2_interfaces()
         return self.l2_interfaces
+    
+    @property
+    def layer3_interfaces(self):
+        if self.l3_interfaces is None:
+            self.l3_interfaces = self._fetch_l3_interfaces()
