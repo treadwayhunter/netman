@@ -9,6 +9,10 @@ class BaseManager(ABC):
     def get_config(self):
         pass
 
+    @abstractmethod
+    def get_device_name(self):
+        pass
+
     @property
     def hostname(self):
         return self._hostname
