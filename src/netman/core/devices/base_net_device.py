@@ -11,20 +11,21 @@ class BaseNetDevice(ABC):
         else:
             self.manager = None
 
-    @abstractmethod
-    def get_config(self):
-        pass
-
     def set_manager(self, protocol: MP):
         if protocol == MP.SSH:
             # use SSHManager
-            pass
+            raise ValueError("Not yet implemeneted.")
         elif protocol == MP.RESTCONF:
             # use RESTCONFManager
-            pass
+            raise ValueError("Not yet implemeneted.")
         elif protocol == MP.NETCONF:
             # use NETCONFManager
-            pass
+            raise ValueError("Not yet implemeneted.")
         else:
             raise ValueError("Manager protocol must be of type ManagementProtocol.")
+        
+    
+    @abstractmethod
+    def get_config(self):
+        pass
         
